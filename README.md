@@ -1,5 +1,3 @@
-# ServiceNow-AI-Knowledge-Polisher
-
 # 🚀 ServiceNow AI Knowledge Polisher
 
 ![ServiceNow](https://img.shields.io/badge/Platform-ServiceNow-green) ![AI](https://img.shields.io/badge/AI-Google%20Gemini-blue) ![License](https://img.shields.io/badge/License-MIT-orange)
@@ -14,7 +12,7 @@ A "Plug-and-Play" ServiceNow utility that uses **Google Gemini 1.5 Flash** to in
 * **One-Click Polishing:** Turns rough notes into structured HTML (Headers, Lists, Paragraphs).
 * **Auto-Charting:** Detects numerical data in text and generates visual Bar/Pie charts using [QuickChart.io](https://quickchart.io).
 * **Strict Mode:** AI is configured to return *only* code, ensuring no conversational filler breaks your article.
-* **Secure:** Uses your own API Key stored securely in System Properties (or Script Include).
+* **Secure:** Uses your own API Key stored securely in a **System Property**, keeping it separate from the codebase.
 
 ## 🛠️ Prerequisites
 
@@ -26,16 +24,14 @@ A "Plug-and-Play" ServiceNow utility that uses **Google Gemini 1.5 Flash** to in
 ### Step 1: Import the Update Set
 1.  Download the XML file from the `update-sets/` folder in this repository.
 2.  In ServiceNow, navigate to **System Update Sets > Retrieved Update Sets**.
-3.  Click **Import Update Set from XML** and upload the file.
+3.  Click the link **Import Update Set from XML** and upload the file.
 4.  **Preview** and **Commit** the update set.
 
 ### Step 2: Configure API Key
-1.  Open the `GeminiGlobalUtils` Script Include.
-2.  Locate the line `var apiKey = 'PASTE_YOUR_API_KEY_HERE';`.
-3.  Replace the placeholder with your actual Google Gemini API Key.
-4.  Save the record.
-
-*(Note: If using the System Property version, navigate to `sys_properties.list`, find `gemini.integration.api_key`, and paste your key there).*
+1.  Navigate to **System Properties > All Properties** (or type `sys_properties.list` in the filter navigator).
+2.  Search for the property named: `gemini.integration.api_key`.
+3.  Paste your Google Gemini API Key into the **Value** field.
+4.  Click **Update**.
 
 ---
 
@@ -53,8 +49,9 @@ A "Plug-and-Play" ServiceNow utility that uses **Google Gemini 1.5 Flash** to in
 
 | Component | Name | Description |
 | :--- | :--- | :--- |
-| **Script Include** | `GeminiGlobalUtils` | Handles API connection, Prompt Engineering, and Error Handling. |
-| **UI Action** | `✨ AI Polish` | Client-side button on `kb_knowledge` table. |
+| **Script Include** | `GeminiGlobalUtils` | Handles logic, constructs the prompts, and retrieves the API Key safely from System Properties. |
+| **System Property** | `gemini.integration.api_key` | Stores the client's API Key securely so no code editing is required. |
+| **UI Action** | `✨ AI Polish` | Client-side button on `kb_knowledge` table that triggers the process. |
 | **REST Message** | `Gemini AI` | Configured endpoint for Google Generative Language API. |
 
 ---
@@ -63,6 +60,6 @@ A "Plug-and-Play" ServiceNow utility that uses **Google Gemini 1.5 Flash** to in
 This tool sends data to the Google Gemini API. Ensure you comply with your organization's data privacy policies regarding AI usage. Do not process PII (Personally Identifiable Information) without validation.
 
 ## 👤 Author
-**[Your Name]**
+**Saurabh**
 * ServiceNow Developer
-* [Link to your LinkedIn Profile]
+* [LinkedIn Profile](https://www.linkedin.com/in/saurabh-bhoi-20sam/)
