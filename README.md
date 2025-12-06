@@ -1,8 +1,10 @@
 # 🚀 ServiceNow AI Knowledge Polisher
 
+### 🔗 **Download the Update Set:** [Get it here on Topmate](https://topmate.io/srx_b/1837084)
+
 ![ServiceNow](https://img.shields.io/badge/Platform-ServiceNow-green) ![AI](https://img.shields.io/badge/AI-Google%20Gemini-blue) ![License](https://img.shields.io/badge/License-MIT-orange)
 
-A "Plug-and-Play" ServiceNow utility that uses **Google Gemini 1.5 Flash** to instantly format, proofread, and enhance Knowledge Base articles. It creates professional HTML layouts and automatically generates data visualization charts from text data.
+A "Plug-and-Play" ServiceNow utility that uses **Google Gemini 1.5 Flash** to instantly format, proofread, and enhance Knowledge Base articles. It creates professional HTML layouts and automatically generates data visualization charts directly from your text data.
 
 ---
 
@@ -22,15 +24,15 @@ A "Plug-and-Play" ServiceNow utility that uses **Google Gemini 1.5 Flash** to in
 ## 📦 Installation
 
 ### Step 1: Import the Update Set
-1.  Download the XML file from the `update-sets/` folder in this repository.
+1.  **Download** the XML file from the link above (or the `update-sets/` folder).
 2.  In ServiceNow, navigate to **System Update Sets > Retrieved Update Sets**.
 3.  Click the link **Import Update Set from XML** and upload the file.
 4.  **Preview** and **Commit** the update set.
 
 ### Step 2: Configure API Key
-1.  Navigate to **System Properties > All Properties** (or type `sys_properties.list` in the filter navigator).
-2.  Search for the property named: `gemini.integration.api_key`.
-3.  Paste your Google Gemini API Key into the **Value** field.
+1.  Navigate to **System Properties > All Properties** (or type `sys_properties.list` into the navigator).
+2.  Search for the property name: `gemini.integration.api_key`.
+3.  Paste your **Google Gemini API Key** into the **Value** field.
 4.  Click **Update**.
 
 ---
@@ -39,9 +41,9 @@ A "Plug-and-Play" ServiceNow utility that uses **Google Gemini 1.5 Flash** to in
 
 1.  Navigate to **Knowledge > Articles > Create New**.
 2.  Type your rough notes into the **Text** field.
-    * *Example:* "Server CPU usage report: Jan 80%, Feb 65%, Mar 90%."
+    * *Example:* `"Server CPU usage report: Jan 80%, Feb 65%, Mar 90%."`
 3.  Click the **✨ AI Polish** button on the form header.
-4.  Wait 3-5 seconds. The text will be replaced with a clean HTML table/list and a visual chart representing the data.
+4.  Wait 3–5 seconds. The content will automatically convert into clean HTML + a generated visual chart.
 
 ---
 
@@ -49,15 +51,15 @@ A "Plug-and-Play" ServiceNow utility that uses **Google Gemini 1.5 Flash** to in
 
 | Component | Name | Description |
 | :--- | :--- | :--- |
-| **Script Include** | `GeminiGlobalUtils` | Handles logic, constructs the prompts, and retrieves the API Key safely from System Properties. |
-| **System Property** | `gemini.integration.api_key` | Stores the client's API Key securely so no code editing is required. |
-| **UI Action** | `✨ AI Polish` | Client-side button on `kb_knowledge` table that triggers the process. |
-| **REST Message** | `Gemini AI` | Configured endpoint for Google Generative Language API. |
+| **Script Include** | `GeminiGlobalUtils` | Builds prompts, processes AI responses, and retrieves API Key safely. |
+| **System Property** | `gemini.integration.api_key` | Secure storage for your Gemini API Key. |
+| **UI Action** | `✨ AI Polish` | Button on `kb_knowledge` table to trigger polishing. |
+| **REST Message** | `Gemini AI` | Configuration for the Google Generative Language API. |
 
 ---
 
 ## ⚠️ Disclaimer
-This tool sends data to the Google Gemini API. Ensure you comply with your organization's data privacy policies regarding AI usage. Do not process PII (Personally Identifiable Information) without validation.
+This tool sends data to the Google Gemini API. Please ensure you comply with your organization’s AI and data privacy guidelines. Avoid processing PII (Personally Identifiable Information) unless authorized.
 
 ## 👤 Author
 **Saurabh**
